@@ -30,7 +30,7 @@ const Dynamic: NextPage = (props: {
     }, []) //array vazio faz não chamar API toda hora, só qdo reinicia a pagina. Este array serve para vc configurar quando quer usar a função fetchData, e é p isso que o useEffect serve
 
     const fetchData = async () => {
-        const data = await fetch("/api/hello").then( res => res.json()) //fetch busca dados de uma API; .then() trata a resposta da slicitação
+        const data = await fetch("/api/hello").then( res => res.json()) //fetch busca dados de uma API; .then() trata a resposta da slicitação xxx
         setClientSideData(data)
     }
 
