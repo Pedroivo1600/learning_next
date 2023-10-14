@@ -13,9 +13,9 @@ export const getStaticProps: GetStaticProps = async () => {
     return {
         props: {
             staticData
-        }
+        }, revalidate: 10
     }
-}
+} //dados nao sao atualizados no lado do cliente, o dado é gerado estaticamente. COm o revalidate: 10 eles sao atualizados a cada 10 segundos
 
 
 
