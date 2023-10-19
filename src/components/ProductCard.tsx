@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Button, Card, CardBody, CardSubtitle } from "reactstrap"
 import { ProductType } from "../services/products"
 import SuccessToast from "../components/SucessToast"
+import { useCart } from "../hooks/useCart"
 
 type ProductCardProps = {
   product: ProductType
@@ -12,6 +13,8 @@ type ProductCardProps = {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => { //({ product }) -Está extraindo a product de ProductCardProps; React.FC diz que ProductCard é um componente React funcional
   const [toastIsOpen, setToastIsOpen] = useState(false) //inicialmente, toastIsOpen = false, o que sugere um "toast" -> uma mensagem de pop-up
   const { id, name, imageUrl, price } = product //desestrutura o objeto "product" e extrai somente essas propriedades em variáveis separadas
+  const { addProduct } = useCart()
+
 
   return (
     <>
@@ -36,6 +39,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => { //({ product 
           className="pb-2"
           block
           onClick={() => {
+            addProduct(product)
             setToastIsOpen(true)
             setTimeout(() => setToastIsOpen(false), 1000 * 3)
           }}
